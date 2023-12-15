@@ -4,10 +4,11 @@ import { StatusBar } from "expo-status-bar";
 import React, { useCallback } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import HomeScreen from "./app/src/screens/Home/HomeScreen";
-import IconButton from "./app/src/components/IconButton";
+import IconButton from "./app/src/components/Buttons/IconButton";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import Onboarding from "./app/src/screens/OnBoarding/Onboarding";
+
 
 export default function App() {
   const Stack = createStackNavigator();
