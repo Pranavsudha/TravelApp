@@ -3,14 +3,17 @@ import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import ReusableText from "../Reusable/ReusableText";
 import { COLORS, TEXT } from "../../../../constants/theme";
-import { NetworkImage } from "..";
+import { HeightSpacer, NetworkImage } from "..";
+import { useNavigation } from "@react-navigation/native";
 
 
 const Country = ({item}) => {
+  const navigation = useNavigation() //instance
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={()=>navigation.navigate('CountryDetails',{item})}>
       <View>
-        <NetworkImage width={85} height={85} radius={12} source={item.imageUrl} />
+        <NetworkImage width={75} height={75} radius={12} source={item.imageUrl} />
+        <HeightSpacer height={10}/> 
         <ReusableText
           text={item.country}
           family={"medium"}

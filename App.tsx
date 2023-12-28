@@ -10,6 +10,12 @@ import * as SplashScreen from "expo-splash-screen";
 import Onboarding from "./app/src/screens/OnBoarding";
 import HomeTabs from "./app/navigation/tabs/BottomTabNavigation";
 import Search from "./app/src/screens/Search";
+import CountryDetails from "./app/src/screens/Details/CountryDetails";
+import Recommended from "./app/src/components/Details/Recommend";
+import Recommendations from "./app/src/screens/Home/Recommendations";
+import PlaceDetails from "./app/src/components/Details/PlaceDetails";
+import HotelList from "./app/src/screens/Home/HotelList";
+import HomeDetails from "./app/src/screens/Details/homeDetails";
 
 
 export default function App() {
@@ -34,7 +40,7 @@ export default function App() {
   }
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Onboarding">
         <Stack.Screen
           name="Onboarding"
           component={Onboarding}
@@ -54,6 +60,54 @@ export default function App() {
            <Stack.Screen
           name="Search"
           component={Search}
+          options={{
+           headerShown:false,
+           animationEnabled:false
+          }}
+        />
+          <Stack.Screen
+          name="CountryDetails"
+          component={CountryDetails}
+          options={{
+           headerShown:true,
+           animationEnabled:false
+          }}
+        />
+           <Stack.Screen
+          name="Recommendations"
+          component={Recommendations}
+          options={{
+           headerShown:true,
+           animationEnabled:false
+          }}
+        />
+           <Stack.Screen
+          name="Recommended"
+          component={Recommended}
+          options={{
+           headerShown:true,
+           animationEnabled:false
+          }}
+        />
+          <Stack.Screen
+          name="PlaceDetails"
+          component={PlaceDetails}
+          options={{
+           headerShown:true,
+           animationEnabled:false
+          }}
+        />
+           <Stack.Screen
+          name="HomeDetails"
+          component={HomeDetails}
+          options={{
+           headerShown:false,
+           animationEnabled:false
+          }}
+        />
+            <Stack.Screen
+          name="HotelList"
+          component={HotelList}
           options={{
            headerShown:false,
            animationEnabled:false

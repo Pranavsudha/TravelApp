@@ -3,12 +3,12 @@ import ReusableBtn from "./Reusable/ReusableBtn"
 import HeightSpacer from "./Reusable/HeightSpacer"
 import WidthSpacer from "./Reusable/WidthSpacer"
 import NetworkImage from "./Reusable/NetworkImage"
-import Country from "./Tiles/Country"
+
 export   {
     ReusableText,
     ReusableBtn,
     HeightSpacer,
     WidthSpacer,
     NetworkImage,
-    Country
+
 }
