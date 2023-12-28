@@ -106,9 +106,10 @@ const HotelList = () => {
           color1={COLORS.white}
            onPress={()=>navigation.goBack()}  
            onPress1={()=>navigation.navigate('HotelSearch')}
+           top={10} left={0} right={0}   
                  />
       </View>
-      <View style={{marginTop:40}}>
+      <View style={{paddingTop:40}}>
         <FlatList
           data={hotel}
           keyExtractor={(item) => item._id} //takes an item from data and gets the id of every item -- every unique key

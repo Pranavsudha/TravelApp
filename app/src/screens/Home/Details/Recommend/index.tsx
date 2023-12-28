@@ -70,10 +70,9 @@ const Recommended = () => {
           icon2={"search1"}
           color1={COLORS.white}
           onPress={() => navigation.goBack()}
-          onPress1={()=>navigation.navigate('Search')}
-        />
+          onPress1={() => navigation.navigate('Search')} top={10} left={0} right={0}        />
       </View>
-      <View style={{ paddingTop: 20 }}>
+      <View style={{ paddingTop: 50 }}>
         <FlatList
           data={recommendations}
           keyExtractor={(item) => item._id} //takes an item from data and gets the id of every item -- every unique key

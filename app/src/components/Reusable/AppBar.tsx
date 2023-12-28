@@ -5,9 +5,9 @@ import { COLORS, TEXT } from "../../../../constants/theme";
 import { AntDesign } from "@expo/vector-icons";
 import ReusableText from "./ReusableText";
 
-const AppBar = ({ color, color1, title,icon,icon2,onPress,onPress1 }) => {
+const AppBar = ({ color, color1, title,icon,icon2,onPress,onPress1,top,left,right }) => {
   return (
-    <SafeAreaView style={styles.overlay}>
+    <SafeAreaView style={styles.overlay(top,left,right)}>
       <View style={reusable.rowWithSpace("space-between")}>
         <TouchableOpacity style={styles.box(color)} onPress={onPress}>
           <AntDesign name={icon} size={26} />
@@ -29,10 +29,14 @@ const AppBar = ({ color, color1, title,icon,icon2,onPress,onPress1 }) => {
 export default AppBar;
 
 const styles = StyleSheet.create({
-  overlay: {
+  overlay:(top,left,right)=>({
+    position:"absolute",
+    top:top,
+    left:left,
+    right:right,
     justifyContent: "center",
 
-  },
+  }) ,
   box: (color) => ({
     backgroundColor: color,
     width: 30,

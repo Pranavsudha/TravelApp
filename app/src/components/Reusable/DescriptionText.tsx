@@ -2,10 +2,10 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { TEXT } from '../../../../constants/theme'
 
-const DescriptionText = ({lines,text}) => {
+const DescriptionText = ({lines,text,description}) => {
   return (
-    <View>
-      <Text style={styles.description} numberOfLines={lines}>DescriptionText</Text>
+    <View style={styles.container}>
+      <Text style={styles.description} numberOfLines={lines}>{description}</Text>
     </View>
   )
 }
@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
     description:{
       paddingVertical:10,
       fontFamily:"regular",
-      textAlign:"center",
-      fontSize:TEXT.medium,
+      fontSize:TEXT.small,
     }
 })

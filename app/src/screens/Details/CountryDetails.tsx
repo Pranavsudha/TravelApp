@@ -1,4 +1,5 @@
 import {
+  FlatList,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -7,13 +8,20 @@ import {
 } from "react-native";
 import React from "react";
 import { useRoute } from "@react-navigation/native";
-import { HeightSpacer, NetworkImage, ReusableBtn, ReusableText } from "../../components";
+import {
+  HeightSpacer,
+  NetworkImage,
+  ReusableBtn,
+  ReusableText,
+} from "../../components";
 import { COLORS, SIZES, TEXT } from "../../../../constants/theme";
 import { ScrollView } from "react-native-gesture-handler";
 import AppBar from "../../components/Reusable/AppBar";
 import DescriptionText from "../../components/Reusable/DescriptionText";
 import { reusable } from "../../components/Reusable/resusable.style";
-import { Feather } from '@expo/vector-icons';
+import { Feather } from "@expo/vector-icons";
+import PopularList from "../../components/Country/PopularList";
+import HotelCard from "../../components/Card/HotelCard";
 
 const CountryDetails = ({ navigation }) => {
   const route = useRoute();
@@ -47,61 +55,67 @@ const CountryDetails = ({ navigation }) => {
     ],
     region: "North America, USA",
   };
-  console.log(item);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView>
-        <View>
-          <NetworkImage
-            source={country.imageUrl}
-            width={"100%"}
-            height={350}
-            radius={30}
-          />
-          <AppBar
-            color={COLORS.white}
-            title={country.country}
-            icon={"left"}
-            icon2={"search1"}
-            color1={COLORS.white}
-            onPress={() => navigation.goBack()}
-            onPress1={() => {}}
-          />
-        </View>
-        <View style={styles.description}>
+    <ScrollView>
+      <View>
+        <NetworkImage
+          source={country.imageUrl}
+          width={"100%"}
+          height={350}
+          radius={30}
+        />
+        <AppBar
+          color={COLORS.white}
+          title={country.country}
+          icon={"left"}
+          icon2={"search1"}
+          color1={COLORS.white}
+          onPress={() => navigation.goBack()}
+          onPress1={() => {}}
+          top={40}
+          left={20}
+          right={20}
+        />
+      </View>
+      <View style={styles.description}>
+        <ReusableText
+          text={country.region}
+          family={"medium"}
+          size={TEXT.xLarge} //map it to xxlarge
+          color={COLORS.black}
+        />
+        <DescriptionText description={country.description} />
+      </View>
+      <View style={{ marginHorizontal:15,marginTop:10}}>
+        <View style={reusable.rowWithSpace("space-between")}>
           <ReusableText
-            text={country.region}
+            text={"Popular Destinations"}
             family={"medium"}
-            size={TEXT.xLarge} //map it to xxlarge
+            size={TEXT.large} //map it to xxlarge
             color={COLORS.black}
           />
-          <DescriptionText lines={3} text={country.description} />
-        </View>
-        <View style={{ alignContent: "center" }}>
-          <View style={reusable.rowWithSpace("space-between")}>
-            <ReusableText
-              text={"Popular Destinations"}
-              family={"medium"}
-              size={TEXT.large} //map it to xxlarge
-              color={COLORS.black}
-            />
-            <TouchableOpacity onPress={()=>{}}>
+          <TouchableOpacity onPress={() => {}}>
             <Feather name="list" size={24} color="black" />
-            </TouchableOpacity>
-            <ReusableBtn
-          onPress={() => {navigation.navigate('HotelSearch',{Id:country._id})}}
+          </TouchableOpacity>
+        </View>
+        <View style={{paddingTop:20}}>
+        <PopularList data={country.popular} />
+        <ReusableBtn
+          onPress={() => {
+            navigation.navigate("HotelSearch", { Id: country._id });
+          }}
           btnText={"Find Best Hotels"}
-          width={SIZES.width - 40} 
+          width={SIZES.width - 40}
           backgroundColor={COLORS.green}
           borderColor={COLORS.green}
           borderWidth={0}
           textColor={COLORS.white}
         />
-          </View>
         </View>
-      </ScrollView>
-    </SafeAreaView>
+       
+      </View>
+    </ScrollView>
   );
 };
 
