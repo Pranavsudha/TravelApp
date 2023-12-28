@@ -57,7 +57,7 @@ const CountryDetails = ({ navigation }) => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView >
       <View>
         <NetworkImage
           source={country.imageUrl}
@@ -82,39 +82,39 @@ const CountryDetails = ({ navigation }) => {
         <ReusableText
           text={country.region}
           family={"medium"}
-          size={TEXT.xLarge} //map it to xxlarge
+          size={TEXT.large}
           color={COLORS.black}
         />
         <DescriptionText description={country.description} />
-      </View>
-      <View style={{ marginHorizontal:15,marginTop:10}}>
+
+      <View style={{ alignContent: "center" }}>
         <View style={reusable.rowWithSpace("space-between")}>
           <ReusableText
-            text={"Popular Destinations"}
+            text={"Recommendations"}
             family={"medium"}
-            size={TEXT.large} //map it to xxlarge
+            size={TEXT.large}
             color={COLORS.black}
           />
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity onPress={() => navigation.navigate("Recommended")}>
             <Feather name="list" size={24} color="black" />
           </TouchableOpacity>
         </View>
-        <View style={{paddingTop:20}}>
-        <PopularList data={country.popular} />
+        </View>
+        <HeightSpacer height={20}/>
+        <PopularList data={country.popular}/>
+        <HeightSpacer height={20}/>
         <ReusableBtn
-          onPress={() => {
-            navigation.navigate("HotelSearch", { Id: country._id });
-          }}
+          onPress={() => { navigation.navigate('HomeTabs'); } }
           btnText={"Find Best Hotels"}
-          width={SIZES.width - 40}
+          width={SIZES.width - 40} //Subtract 50 from width and divide by 2.2
           backgroundColor={COLORS.green}
           borderColor={COLORS.green}
           borderWidth={0}
-          textColor={COLORS.white}
-        />
-        </View>
-       
+          textColor={COLORS.white}   
+               />
+                     
       </View>
+      <HeightSpacer height={20}/>
     </ScrollView>
   );
 };
