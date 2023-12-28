@@ -1,14 +1,12 @@
-import { StyleSheet, Text, TouchableOpacity, View,FlatList } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View,FlatList } from "react-native";
 import React from "react";
-import { HeightSpacer, ReusableText } from "../../../components";
-import { COLORS, SIZES, TEXT } from "../../../../../constants/theme";
-import { reusable } from "../../../components/Reusable/resusable.style";
-import { Feather } from "@expo/vector-icons";
+import AppBar from "../../../../components/Reusable/AppBar";
+import { COLORS, SIZES } from "../../../../../../constants/theme";
+import Recommendations from "../../Recommendations";
+import ReusableTile from "../../../../components/Reusable/ReusableTile";
 import { useNavigation } from "@react-navigation/native";
 
-import ReusableTile from "../../../components/Reusable/ReusableTile";
-
-const Recommendations = () => {
+const Recommended = () => {
   const navigation = useNavigation();
   const recommendations = [
     {
@@ -19,7 +17,7 @@ const Recommendations = () => {
         "https://d326fntlu7tb1e.cloudfront.net/uploads/731e1f89-c028-43ef-97ee-8beabde696b6-vinci_01_disney.jpg",
       rating: 4.7,
       review: "1204 Reviews",
-      location:"New York,USA"
+      location: "New York,USA",
     },
     {
       _id: "64d062a3de20d7c932f1f70a",
@@ -29,7 +27,7 @@ const Recommendations = () => {
         "https://d326fntlu7tb1e.cloudfront.net/uploads/c3a8b882-b176-47f0-aec5-a0a49bf42fcd-statue-of-liberty-1.webp",
       rating: 4.8,
       review: "1452 Reviews",
-      location:"New York,USA"
+      location: "New York,USA",
     },
     {
       _id: "64d09e3f364e1c37c8b4b13c",
@@ -39,7 +37,7 @@ const Recommendations = () => {
         "https://d326fntlu7tb1e.cloudfront.net/uploads/7b7b76aa-bbe0-4ca4-b52f-e2b82afa3a77-Golden-Gate-Bridge-San-Francisco.webp",
       rating: 4.6,
       review: "2145 Reviews",
-      location:"New York,USA"
+      location: "New York,USA",
     },
     {
       _id: "64d09f90364e1c37c8b4b140",
@@ -49,7 +47,7 @@ const Recommendations = () => {
         "https://d326fntlu7tb1e.cloudfront.net/uploads/f3f44363-f250-4002-88a8-19fe79169cc7-geyser-yelowstone-burst_h.webp",
       rating: 4.8,
       review: "24455 Reviews",
-      location:"New York,USA"
+      location: "New York,USA",
     },
     {
       _id: "64d30f789d008909fa8b7ce5",
@@ -59,42 +57,40 @@ const Recommendations = () => {
       title: "Yellowstone National Park",
       rating: 4.8,
       review: "24455 Reviews",
-      location:"New York,USA"
+      location: "New York,USA",
     },
   ];
-
-
   return (
-    <View style={styles.container}>
-      <View
-        style={[reusable.rowWithSpace("space-between"), { paddingBottom: 20 }]}
-      >
-        <ReusableText
-          text={"Recommendations"}
-          family={"medium"}
-          size={TEXT.large}
-          color={COLORS.black}
+    <SafeAreaView>
+      <View style={{ marginHorizontal: 15 }}>
+        <AppBar
+          color={COLORS.white}
+          title={"Recommendations"}
+          icon={"left"}
+          icon2={"search1"}
+          color1={COLORS.white}
+          onPress={() => navigation.goBack()}
+          onPress1={()=>navigation.navigate('Search')}
         />
-        <TouchableOpacity onPress={() => navigation.navigate("Recommended")}>
-          <Feather name="list" size={24} color="black" />
-        </TouchableOpacity>
       </View>
-      <FlatList
-        data={recommendations}
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        keyExtractor={(item) => item._id} //takes an item from data and gets the id of every item -- every unique key
-        contentContainerStyle={{ columnGap: SIZES.medium }}
-        renderItem={({ item }) => <ReusableTile item={item} onPress={()=>navigation.navigate('PlaceDetails',item._id)}/>}
-      />
-    </View>
+      <View style={{ paddingTop: 20 }}>
+        <FlatList
+          data={recommendations}
+          keyExtractor={(item) => item._id} //takes an item from data and gets the id of every item -- every unique key
+          renderItem={({ item }) => (
+            <View style={{ margin: 10 }}>
+              <ReusableTile
+                item={item}
+                onPress={() => navigation.navigate("PlaceDetails", item._id)}
+              />
+            </View>
+          )}
+        />
+      </View>
+    </SafeAreaView>
   );
 };
 
-export default Recommendations;
+export default Recommended;
 
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: 30,
-  },
-});
+const styles = StyleSheet.create({});

@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const Recommended = () => {
+const HotelSearch = () => {
   return (
     <View>
-      <Text>index</Text>
+      <Text>HotelSearch</Text>
     </View>
   )
 }
 
-export default Recommended
+export default HotelSearch
 
 const styles = StyleSheet.create({})
