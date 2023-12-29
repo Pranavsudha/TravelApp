@@ -100,14 +100,14 @@ const PlaceDetails = () => {
         <HeightSpacer height={20} />
         <ReusableBtn
           onPress={() => {
-            navigation.navigate("HomeTabs");
+            navigation.navigate("HotelSearch");
           } }
           btnText={"Find Best Hotels"}
           width={SIZES.width - 40} //Subtract 50 from width and divide by 2.2
           backgroundColor={COLORS.green}
           borderColor={COLORS.green}
           borderWidth={0}
-          textColor={COLORS.white}        />
+          textColor={COLORS.white}  />
       </View>
       <HeightSpacer height={20} />
     </ScrollView>
