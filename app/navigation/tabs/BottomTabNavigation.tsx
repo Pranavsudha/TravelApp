@@ -11,6 +11,7 @@ import Profile from "../../src/screens/Profile";
 import { FontAwesome } from '@expo/vector-icons';
 import Chat from "../../src/screens/Chat";
 import Location from "../../src/screens/Location";
+import { ProfileTabs } from "./ProfileTopTab";
 
 
 
@@ -104,7 +105,7 @@ const BottomTab = createBottomTabNavigator();
         />
          <BottomTab.Screen
           name="Profile"
-          component={Profile}
+          component={ProfileTabs}
           options={{
             tabBarStyle:{
                 padding:20,
