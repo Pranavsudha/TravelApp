@@ -1,11 +1,4 @@
-import {
-  FlatList,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { useRoute } from "@react-navigation/native";
 import {
@@ -26,6 +19,8 @@ import HotelCard from "../../components/Card/HotelCard";
 const CountryDetails = ({ navigation }) => {
   const route = useRoute();
   const { item } = route.params;
+  console.log(item)
+  
   const country = {
     _id: "64c62bfc65af9f8c969a8d04",
     country: "USA",
@@ -57,7 +52,7 @@ const CountryDetails = ({ navigation }) => {
   };
 
   return (
-    <ScrollView >
+    <ScrollView>
       <View>
         <NetworkImage
           source={country.imageUrl}
@@ -85,36 +80,39 @@ const CountryDetails = ({ navigation }) => {
           size={TEXT.large}
           color={COLORS.black}
         />
-        <DescriptionText description={country.description} />
+        <DescriptionText description={country.description}  />
 
-      <View style={{ alignContent: "center" }}>
-        <View style={reusable.rowWithSpace("space-between")}>
-          <ReusableText
-            text={"Recommendations"}
-            family={"medium"}
-            size={TEXT.large}
-            color={COLORS.black}
-          />
-          <TouchableOpacity onPress={() => navigation.navigate("Recommended")}>
-            <Feather name="list" size={24} color="black" />
-          </TouchableOpacity>
+        <View style={{ alignContent: "center" }}>
+          <View style={reusable.rowWithSpace("space-between")}>
+            <ReusableText
+              text={"Recommendations"}
+              family={"medium"}
+              size={TEXT.large}
+              color={COLORS.black}
+            />
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Recommended")}
+            >
+              <Feather name="list" size={24} color="black" />
+            </TouchableOpacity>
+          </View>
         </View>
-        </View>
-        <HeightSpacer height={20}/>
-        <PopularList data={country.popular}/>
-        <HeightSpacer height={20}/>
+        <HeightSpacer height={20} />
+        <PopularList data={country.popular} />
+        <HeightSpacer height={20} />
         <ReusableBtn
-          onPress={() => { navigation.navigate('HomeTabs'); } }
+          onPress={() => {
+            navigation.navigate("HomeTabs");
+          }}
           btnText={"Find Best Hotels"}
           width={SIZES.width - 40} //Subtract 50 from width and divide by 2.2
           backgroundColor={COLORS.green}
           borderColor={COLORS.green}
           borderWidth={0}
-          textColor={COLORS.white}   
-               />
-                     
+          textColor={COLORS.white}
+        />
       </View>
-      <HeightSpacer height={20}/>
+      <HeightSpacer height={20} />
     </ScrollView>
   );
 };

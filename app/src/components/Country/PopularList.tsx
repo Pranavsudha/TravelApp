@@ -6,9 +6,7 @@ import { useNavigation } from '@react-navigation/native'
 
 const PopularList = ({data}) => {
     const navigation = useNavigation()
-    const renderItem =({item})=>{
    
-    }
   return (
 <FlatList
 data={data} //feed data to flatlist
@@ -16,7 +14,7 @@ scrollEnabled = {false}
 showsVerticalScrollIndicator={false}
 keyExtractor={(item)=>item.id}
 renderItem={({item})=>
-<View>
+<View style={{marginBottom:15}}>
 <ReusableTile item={item} onPress={()=>navigation.navigate('PlaceDetails')}/>
 </View>
 }

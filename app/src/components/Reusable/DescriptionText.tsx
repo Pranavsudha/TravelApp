@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { TEXT } from '../../../../constants/theme'
 
-const DescriptionText = ({lines,text,description}) => {
+const DescriptionText = ({lines,description}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.description} numberOfLines={lines}>{description}</Text>
