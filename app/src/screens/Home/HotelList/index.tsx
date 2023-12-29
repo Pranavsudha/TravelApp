@@ -109,7 +109,7 @@ const HotelList = () => {
            top={10} left={0} right={0}   
                  />
       </View>
-      <View style={{paddingTop:50}}>
+      <View style={{marginTop:50}}>
         <FlatList
           data={hotel}
           keyExtractor={(item) => item._id} //takes an item from data and gets the id of every item -- every unique key
