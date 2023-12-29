@@ -1,46 +1,55 @@
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
 import AppBar from "../../components/Reusable/AppBar";
 import { COLORS, SIZES, TEXT } from "../../../../constants/theme";
 import { useNavigation } from "@react-navigation/native";
-import { NetworkImage, ReusableText, WidthSpacer } from "../../components";
+import {
+  HeightSpacer,
+  NetworkImage,
+  ReusableText,
+  WidthSpacer,
+} from "../../components";
 import { reusable } from "../../components/Reusable/resusable.style";
 import { Feather } from "@expo/vector-icons";
-import { Rating } from 'react-native-stock-star-rating'
-
+import { Rating } from "react-native-stock-star-rating";
+import DescriptionText from "../../components/Reusable/DescriptionText";
 
 const HotelDetails = () => {
   const navigation = useNavigation();
-  const hotel = 
-    {
-      availability: {
-        start: "2023-08-20T00:00:00.000Z",
-        end: "2023-08-25T00:00:00.000Z",
+  const hotel = {
+    availability: {
+      start: "2023-08-20T00:00:00.000Z",
+      end: "2023-08-25T00:00:00.000Z",
+    },
+    _id: "64c675793cfa5e847bcd5436",
+    country_id: "64c62bfc65af9f8c969a8d04",
+    title: "Urban Chic Boutique Hotel",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris sit amet massa vitae tortor condimentum lacinia quis. Elit ut aliquam purus sit amet luctus. Nunc mi ipsum faucibus vitae aliquet. Et magnis dis parturient montes nascetur ridiculus mus mauris. Vel fringilla est ullamcorper eget nulla facilisi.",
+    contact: "64c5d95adc7efae2a45ec376",
+    imageUrl:
+      "https://d326fntlu7tb1e.cloudfront.net/uploads/5da4db00-e83f-449a-a97a-b7fa80a5bda6-aspen.jpeg",
+    rating: 4.8,
+    review: "2312 Reviews",
+    location: "San Francisco, CA",
+    latitude: 37.7749,
+    longitude: -122.4194,
+    price: 400,
+    facilities: [
+      {
+        wifi: true,
+        _id: "64c675793cfa5e847bcd5437",
       },
-      _id: "64c675793cfa5e847bcd5436",
-      country_id: "64c62bfc65af9f8c969a8d04",
-      title: "Urban Chic Boutique Hotel",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris sit amet massa vitae tortor condimentum lacinia quis. Elit ut aliquam purus sit amet luctus. Nunc mi ipsum faucibus vitae aliquet. Et magnis dis parturient montes nascetur ridiculus mus mauris. Vel fringilla est ullamcorper eget nulla facilisi.",
-      contact: "64c5d95adc7efae2a45ec376",
-      imageUrl:
-        "https://d326fntlu7tb1e.cloudfront.net/uploads/5da4db00-e83f-449a-a97a-b7fa80a5bda6-aspen.jpeg",
-      rating: 4.8,
-      review: "2312 Reviews",
-      location: "San Francisco, CA",
-      latitude: 37.7749,
-      longitude: -122.4194,
-      price: 400,
-      facilities: [
-        {
-          wifi: true,
-          _id: "64c675793cfa5e847bcd5437",
-        },
-      ],
-      __v: 0,
-    }
-  ;
-  console.log(hotel.imageUrl)
+    ],
+    __v: 0,
+  };
+  console.log(hotel.imageUrl);
   return (
     <ScrollView>
       <View style={{ height: 80 }}>
@@ -70,24 +79,52 @@ const HotelDetails = () => {
               text={hotel.title}
               family={"medium"}
               size={SIZES.xLarge}
-              color={COLORS.black}          />
+              color={COLORS.black}
+            />
             <ReusableText
               text={hotel.location}
               family={"medium"}
               size={SIZES.xLarge}
               color={COLORS.black}
             />
-             <View style={reusable.rowWithSpace("flex-start")}>
-             <Rating stars={hotel.rating} maxStars={5} size={25} bordered={false} color={"#FD9942"} />
-             <WidthSpacer width={20}/>
-             <ReusableText
-              text={`(${hotel.review})`}
-              family={"medium"}
-              size={SIZES.medium}
-              color={COLORS.gray}
-            />
+            <View style={reusable.rowWithSpace("flex-start")}>
+              <Rating
+                stars={hotel.rating}
+                maxStars={5}
+                size={25}
+                bordered={false}
+                color={"#FD9942"}
+              />
+              <WidthSpacer width={20} />
+              <ReusableText
+                text={`(${hotel.review})`}
+                family={"medium"}
+                size={SIZES.medium}
+                color={COLORS.gray}
+              />
+            </View>
           </View>
-          </View>
+        </View>
+      </View>
+      <View>
+        <View style={[styles.container, { paddingTop: 90 }]}>
+          <HeightSpacer height={20} />
+          <ReusableText
+            text={"Description"}
+            family={"medium"}
+            size={SIZES.large}
+            color={COLORS.black}
+          />
+          <HeightSpacer height={10} />
+          <DescriptionText description={hotel.description} />
+          <ReusableText
+            text={hotel.location}
+            family={"regular"}
+            size={SIZES.small + 2}
+            color={COLORS.gray}
+          />
+          <HeightSpacer height={15} />
+           
         </View>
       </View>
     </ScrollView>
