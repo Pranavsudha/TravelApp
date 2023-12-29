@@ -9,7 +9,6 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import Onboarding from "./app/src/screens/OnBoarding";
 import HomeTabs from "./app/navigation/tabs/BottomTabNavigation";
-import Search from "./app/src/screens/Search";
 import CountryDetails from "./app/src/screens/Details/CountryDetails";
 import Recommendations from "./app/src/screens/Home/Recommendations";
 import PlaceDetails from "./app/src/screens/Home/Details/PlaceDetails";
@@ -19,6 +18,7 @@ import Recommended from "./app/src/screens/Home/Details/Recommend";
 import HotelSearch from "./app/src/screens/Search/HotelSearch";
 import HotelDetails from "./app/src/screens/Details/HotelDetails";
 import SelectRooms from "./app/src/screens/Bookings/SelectRooms";
+import Search from "./app/src/screens/Search/Search";
 
 
 export default function App() {
