@@ -12,6 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 import {
   HeightSpacer,
   NetworkImage,
+  ReusableBtn,
   ReusableText,
   WidthSpacer,
 } from "../../components";
@@ -19,6 +20,8 @@ import { reusable } from "../../components/Reusable/resusable.style";
 import { Feather } from "@expo/vector-icons";
 import { Rating } from "react-native-stock-star-rating";
 import DescriptionText from "../../components/Reusable/DescriptionText";
+import HotelMap from "../../components/Hotel/HotelMap";
+import ReviewsList from "../../components/Hotel/ReviewsList";
 
 const HotelDetails = () => {
   const navigation = useNavigation();
@@ -48,7 +51,44 @@ const HotelDetails = () => {
       },
     ],
     __v: 0,
-  };
+    reviews:[
+      {
+        _id: "64c675793cfa5e847bcd5436",
+        review: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        rating:4.6,
+        user:{
+          _id: "64c675793cfa5e847bcd5436",
+          username:"John Doe",
+          profile:"https://d326fntlu7tb1e.cloudfront.net/uploads/5da4db00-e83f-449a-a97a-b7fa80a5bda6-aspen.jpeg",
+
+        },
+        updatedAt:"2023-08-09T13:09:09:200z"
+      },
+      {
+        _id: "64c675793cfa5e847bcd5478",
+        review: "Lorem epsum",
+        rating:4.8,
+        user:{
+          _id: "64c675793cfa5e847bcd5478",
+          username:"Zoe Doe",
+          profile:"https://d326fntlu7tb1e.cloudfront.net/uploads/5da4db00-e83f-449a-a97a-b7fa80a5bda6-aspen.jpeg",
+
+        },
+        updatedAt:"2023-08-09T13:09:09:200z"
+      }
+    ],
+  }
+
+  
+   
+  let coordinates = {
+  id:hotel._id,
+  title:hotel.title,
+  latitude:hotel.latitude,
+  longitude:hotel.longitude,
+  latitudeDelta:0.01,
+  longitudeDelata:0.01
+  }
   console.log(hotel.imageUrl);
   return (
     <ScrollView>
@@ -124,7 +164,52 @@ const HotelDetails = () => {
             color={COLORS.gray}
           />
           <HeightSpacer height={15} />
+           <HotelMap coordinates={coordinates}  />
+           <View style={reusable.rowWithSpace('space-between')}>
+           <ReusableText
+            text={"Reviews"}
+            family={"medium"}
+            size={SIZES.large}
+            color={COLORS.black}
+          />
+              <TouchableOpacity
+            >
+              <Feather name="list" size={24} />
            
+            </TouchableOpacity>
+ 
+           </View>
+           <HeightSpacer height={10}/>
+           <ReviewsList reviews={hotel.reviews}/>
+           <View>
+           <View style={[reusable.rowWithSpace('space-between'),styles.bottom]}>
+            <View>
+            <ReusableText 
+            text={` $ ${hotel.price}`} 
+            family={"medium"} 
+            size={SIZES.medium} 
+            color={COLORS.black} 
+           />
+            <HeightSpacer height={5} />
+            <ReusableText 
+            text={`Jan 1 - Dec 25`} 
+            family={"medium"} 
+            size={SIZES.medium} 
+            color={COLORS.gray} 
+           />
+            </View>
+            <ReusableBtn
+              onPress={() => { navigation.navigate('SelectRooms') } }
+              btnText={"Select Room"}
+              width={(SIZES.width - 50) / 2.2} //Subtract 50 from width and divide by 2.2
+              backgroundColor={COLORS.green}
+              borderColor={COLORS.red}
+              borderWidth={0}
+              textColor={COLORS.white} 
+                     />
+            </View>     
+            
+           </View>
         </View>
       </View>
     </ScrollView>
@@ -151,4 +236,10 @@ const styles = StyleSheet.create({
   titleColumn: {
     padding: 15,
   },
+  bottom:{
+    paddingHorizontal:10,
+    backgroundColor:COLORS.lightWhite,
+    height:90,
+    paddingVertical:10
+  }
 });

@@ -18,6 +18,7 @@ import HomeDetails from "./app/src/screens/Details/HotelDetails";
 import Recommended from "./app/src/screens/Home/Details/Recommend";
 import HotelSearch from "./app/src/screens/Search/HotelSearch";
 import HotelDetails from "./app/src/screens/Details/HotelDetails";
+import SelectRooms from "./app/src/screens/Bookings/SelectRooms";
 
 
 export default function App() {
@@ -110,6 +111,14 @@ export default function App() {
            <Stack.Screen
           name="HotelSearch"
           component={HotelSearch}
+          options={{
+           headerShown:false,
+           animationEnabled:false
+          }}
+        />
+          <Stack.Screen
+          name="SelectRooms"
+          component={SelectRooms}
           options={{
            headerShown:false,
            animationEnabled:false
