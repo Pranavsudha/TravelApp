@@ -118,7 +118,7 @@ const BestHotels = () => {
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item._id} //takes an item from data and gets the id of every item -- every unique key
         contentContainerStyle={{ columnGap: SIZES.medium }}
-        renderItem={({ item }) => <HotelCard item={item} onPress={()=>navigation.navigate('HomeDetails')} />}
+        renderItem={({ item }) => <HotelCard item={item} onPress={()=>navigation.navigate('HotelDetails')} />}
       />
     </View>
   );

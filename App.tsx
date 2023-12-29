@@ -14,9 +14,10 @@ import CountryDetails from "./app/src/screens/Details/CountryDetails";
 import Recommendations from "./app/src/screens/Home/Recommendations";
 import PlaceDetails from "./app/src/screens/Home/Details/PlaceDetails";
 import HotelList from "./app/src/screens/Home/HotelList";
-import HomeDetails from "./app/src/screens/Details/homeDetails";
+import HomeDetails from "./app/src/screens/Details/HotelDetails";
 import Recommended from "./app/src/screens/Home/Details/Recommend";
 import HotelSearch from "./app/src/screens/Search/HotelSearch";
+import HotelDetails from "./app/src/screens/Details/HotelDetails";
 
 
 export default function App() {
@@ -91,8 +92,8 @@ export default function App() {
           }}
         />
            <Stack.Screen
-          name="HomeDetails"
-          component={HomeDetails}
+          name="HotelDetails"
+          component={HotelDetails}
           options={{
            headerShown:false,
            animationEnabled:false

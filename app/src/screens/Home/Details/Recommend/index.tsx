@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, Text, View,FlatList } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View, FlatList } from "react-native";
 import React from "react";
 import AppBar from "../../../../components/Reusable/AppBar";
 import { COLORS, SIZES } from "../../../../../../constants/theme";
@@ -62,17 +62,23 @@ const Recommended = () => {
   ];
   return (
     <SafeAreaView>
-      <View style={{ marginHorizontal: 15 }}>
-        <AppBar
-          color={COLORS.white}
-          title={"Recommendations"}
-          icon={"left"}
-          icon2={"search1"}
-          color1={COLORS.white}
-          onPress={() => navigation.goBack()}
-          onPress1={() => navigation.navigate('Search')} top={10} left={0} right={0}        />
+      <View style={{height:50}}>
+      <AppBar
+        color={COLORS.white}
+        title={"Recommendations"}
+        icon={"left"}
+        icon2={"search1"}
+        color1={COLORS.white}
+        onPress={() => navigation.goBack()}
+        onPress1={() => navigation.navigate("Search")}
+        top={10}
+        left={20}
+        right={20}
+      />
       </View>
-      <View style={{ paddingTop: 50 }}>
+    
+
+      <View>
         <FlatList
           data={recommendations}
           keyExtractor={(item) => item._id} //takes an item from data and gets the id of every item -- every unique key
