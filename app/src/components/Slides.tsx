@@ -35,7 +35,6 @@ export default Slides;
 
 const styles = StyleSheet.create({
   image: {
-    resizeMode: "contain",
     width: SIZES.width,
     height: SIZES.height,
   },
